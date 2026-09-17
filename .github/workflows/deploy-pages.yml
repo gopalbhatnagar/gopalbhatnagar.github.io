@@ -21,14 +21,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
-          cache-dependency-path: game/package-lock.json
+          cache-dependency-path: |
+            game/package-lock.json
+            game2/package-lock.json
 
       - name: Install game dependencies
         working-directory: game

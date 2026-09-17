@@ -30,7 +30,7 @@ jobs:
 
       - name: Install game dependencies
         working-directory: game
-        run: npm ci
+        run: npm install --no-fund --no-audit
 
       - name: Build game bundle
         working-directory: game
@@ -40,7 +40,7 @@ jobs:
         working-directory: game2
         env:
           HUSKY: 0
-        run: npm ci
+        run: npm install --no-fund --no-audit
 
       - name: Build game2 bundle
         working-directory: game2

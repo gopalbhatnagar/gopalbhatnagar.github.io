@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Sample Slot — PixiJS Slot Demo</title>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div><small>PIXJS • TYPESCRIPT • HTML5 GAME</small>
+                <h1>🎰 Sample Slot</h1>
+            </div><span>5 REELS · 3 ROWS · 20 LINES</span>
+        </header>
+        <section class="machine">
+            <div class="top">
+                <div><label>CREDIT</label><strong id="balance">1000</strong></div>
+                <div><label>BET / LINE</label><strong id="bet">10</strong></div>
+                <div><label>WIN</label><strong id="win">0</strong></div>
+                <div class="feature" id="feature">READY</div>
+            </div>
+            <div id="game" class="game"></div>
+            <div class="message" id="msg">Good luck! Land 3+ matching symbols from the left.</div>
+            <div class="controls"><button id="betDown">−</button><button id="spin">SPIN</button><button
+                    id="betUp">+</button></div>
+            <div class="tools"><button id="lines">LINES: 20</button><button id="sound">🔊 SOUND</button><button
+                    id="auto">AUTO SPIN</button><button id="reset">RESET</button></div>
+            <div class="pay">
+                <h3>PAYTABLE</h3>🍒 ×5 10× &nbsp; 🍋 ×5 15× &nbsp; 🔔 ×5 25× &nbsp; ⭐ ×5 50× &nbsp; 💎 SCATTER &nbsp; 🃏
+                WILD
+            </div>
+            <div class="hint">Portfolio prototype only — no real-money wagering or payment integration.</div>
+        </section>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

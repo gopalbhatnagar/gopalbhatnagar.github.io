@@ -1,53 +1,744 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gopal Bhatnagar — Slot Game Developer</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#080814;color:#eee;font-family:Arial,sans-serif}
-nav{padding:18px 7%;border-bottom:1px solid #29243e;display:flex;justify-content:space-between}
-nav b{color:#f6d35c;letter-spacing:1px}.wrap{max-width:1100px;margin:auto;padding:70px 24px}
-h1{font-size:clamp(38px,7vw,72px);margin:0 0 12px;color:#fff}
-h2{color:#f6d35c}.tag{color:#75e8ff;font-weight:bold}
-.hero p{font-size:19px;line-height:1.7;color:#b9b4c8;max-width:760px}
-.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-a{display:inline-block;text-decoration:none;padding:13px 18px;border-radius:10px;font-weight:800}
-.primary{background:#f3bd43;color:#201607}.secondary{border:1px solid #4a4162;color:#fff}
-.card{margin-top:55px;padding:28px;border:1px solid #302847;border-radius:20px;background:#111021}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
-.feature{padding:18px;background:#19162b;border-radius:12px}.feature b{color:#fff}.feature span{display:block;color:#9690a8;margin-top:7px}
-footer{padding:35px 7%;color:#77718b;text-align:center;border-top:1px solid #29243e}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gopal Bhatnagar — Front-End Architect and Slot Game Developer with 15+ years of gaming experience." />
+  <title>Gopal Bhatnagar | Slot Game Developer • Frontend Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #08080b;
+      --panel: #111117;
+      --panel-2: #17171f;
+      --text: #f6f5f2;
+      --muted: #a4a4af;
+      --line: #292934;
+      --accent: #f4c84b;
+      --green: #68e0a0;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 75% 0%, rgba(42, 33, 16, 0.96), transparent 32%), var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      gap: 24px;
+    }
+
+    .logo {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+    }
+    .logo span { color: var(--accent); }
+
+    .navlinks {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .navlinks a { transition: color 0.2s ease; }
+    .navlinks a:hover { color: var(--text); }
+
+    main { padding-bottom: 24px; }
+    section { border-top: 1px solid var(--line); }
+
+    .hero {
+      min-height: calc(100vh - 78px);
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 60px;
+      align-items: center;
+      padding: 70px 0;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .tag {
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1,
+    .section-head h2,
+    .game h3,
+    .card h3,
+    .contactbox h3,
+    .job h3,
+    .logo {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 86px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin: 18px 0 25px;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero p { font-size: 18px; color: var(--muted); max-width: 650px; }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .btn,
+    .game-link,
+    .primary,
+    .secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn,
+    .primary,
+    .secondary {
+      padding: 13px 18px;
+      border: 1px solid var(--line);
+    }
+    .primary,
+    .btn.primary {
+      background: var(--accent);
+      color: #16120a;
+      border-color: var(--accent);
+    }
+    .secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--line);
+    }
+    .btn:hover,
+    .primary:hover,
+    .secondary:hover,
+    .game-link:hover { transform: translateY(-1px); }
+
+    .stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 42px;
+      flex-wrap: wrap;
+    }
+    .stat strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 29px;
+      display: block;
+    }
+    .stat span { font-size: 12px; color: var(--muted); }
+
+    .slotbox {
+      background: linear-gradient(145deg, #19191f, #0d0d11);
+      border: 1px solid #33333d;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      transform: rotate(1deg);
+      max-width: 100%;
+    }
+    .machine-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .jackpot {
+      color: var(--accent);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 18px;
+    }
+    .reels {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      background: #050507;
+      border: 1px solid #30303a;
+      border-radius: 15px;
+      padding: 10px;
+      margin: 18px 0;
+    }
+    .reel {
+      height: 205px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      background: linear-gradient(#f3f0e8, #d7d3ca);
+      border-radius: 9px;
+      color: #15151a;
+      font-size: 34px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+    }
+    .reel small { font-size: 12px; font-weight: 700; }
+
+    .machine-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .pill {
+      font-size: 11px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 7px 10px;
+      border-radius: 99px;
+    }
+    .spin {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 4px solid #292933;
+      background: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      color: #15120a;
+      cursor: pointer;
+    }
+    .spin:active { transform: scale(0.95); }
+
+    .section-block {
+      padding: 88px 0;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+      margin-bottom: 38px;
+    }
+    .section-head h2 {
+      font-size: clamp(30px, 4vw, 42px);
+      letter-spacing: -0.05em;
+      margin: 0;
+    }
+    .section-head p {
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0;
+    }
+
+    .cards,
+    .games,
+    .contact {
+      display: grid;
+      gap: 18px;
+    }
+    .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .games { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .contact { grid-template-columns: 1fr 1fr; }
+
+    .card,
+    .contactbox,
+    .game {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      min-height: 260px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover { border-color: #555562; transform: translateY(-3px); }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: #201e16;
+      color: var(--accent);
+      font-size: 20px;
+      margin-bottom: 35px;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+    }
+    .card p { color: var(--muted); font-size: 14px; }
+    .tags {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 6px 8px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      color: #c5c5cd;
+    }
+
+    .game {
+      position: relative;
+      overflow: hidden;
+      min-height: 310px;
+      padding: 26px;
+      background: linear-gradient(135deg, #1c1710, #101015 58%);
+    }
+    .game:nth-child(2) { background: linear-gradient(135deg, #121820, #111117 60%); }
+    .game:nth-child(3) { background: linear-gradient(135deg, #1d1519, #111117 60%); }
+    .game:nth-child(4) { background: linear-gradient(135deg, #151a12, #111117 60%); }
+    .game h3 {
+      font-size: 30px;
+      margin: 70px 0 8px;
+    }
+    .game p { color: var(--muted); max-width: 500px; }
+    .game-symbols {
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      display: flex;
+      gap: 7px;
+    }
+    .symbol {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #f4f0e6;
+      color: #17171a;
+      display: grid;
+      place-items: center;
+      font-size: 21px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    }
+    .game-link {
+      margin-top: 14px;
+      color: var(--accent);
+      font-size: 13px;
+      justify-content: flex-start;
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .timeline {
+      border-left: 1px solid #383842;
+      margin-left: 8px;
+    }
+    .job {
+      padding: 0 0 44px 34px;
+      position: relative;
+    }
+    .job:before {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      left: -5px;
+      top: 7px;
+      box-shadow: 0 0 0 5px #18150d;
+    }
+    .job .date {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .job h3 {
+      font-size: 21px;
+      margin: 5px 0;
+    }
+    .job .company { color: #d8d8de; }
+    .job p { color: var(--muted); max-width: 800px; font-size: 14px; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+    .skill {
+      padding: 10px 13px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      font-size: 13px;
+    }
+
+    .contactbox {
+      padding: 30px;
+    }
+    .contactbox h3 {
+      font-size: 28px;
+      margin-top: 0;
+    }
+    .contactbox p { color: var(--muted); }
+    .contactline {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .contactline:last-child { border-bottom: 0; }
+    .contactline span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+    }
+
+    footer {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0;
+      color: #777783;
+      font-size: 12px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 50px 0;
+        min-height: unset;
+        text-align: center;
+      }
+      .hero p,
+      .section-head p,
+      .game p,
+      .contactbox p,
+      .job p {
+        max-width: none;
+      }
+
+      .navlinks { display: none; }
+      .section-head {
+        display: block;
+        text-align: center;
+      }
+      .section-head p { margin-top: 12px; }
+      .cards,
+      .games,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+      .buttons,
+      .stats,
+      .machine-bottom {
+        justify-content: center;
+      }
+      .slotbox { max-width: 100%; }
+      .reel { height: 160px; }
+      .contactbox { text-align: center; }
+      .contactline { text-align: left; }
+      footer {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-<nav><b>GOPAL BHATNAGAR</b><span>Slot Game Developer • Frontend Architect</span></nav>
-<main class="wrap">
-<section class="hero">
-<div class="tag">PIX IJS • TYPESCRIPT • HTML5 GAME DEVELOPMENT</div>
-<h1>Sample Slot</h1>
-<p>A commercial-style 5×3 slot game prototype built with PixiJS and TypeScript, demonstrating reel animation, paylines, Wild/Scatter mechanics, Free Spins, Bonus Pick gameplay and responsive presentation.</p>
-<div class="buttons">
-<a class="primary" href="./game/dist/">Launch Game Demo</a>
-<a class="secondary" href="game/">View Game Project</a>
-</div>
-</section>
-<section class="card">
-<h2>Game Features</h2>
-<div class="grid">
-<div class="feature">🎰 <b>5×3 Reels</b><span>Distinct reel strips and sequential stopping</span></div>
-<div class="feature">🎯 <b>20 Paylines</b><span>Visual paylines with win highlighting</span></div>
-<div class="feature">🃏 <b>Wild</b><span>Wild substitution in winning combinations</span></div>
-<div class="feature">💎 <b>Free Spins</b><span>Scatter-triggered bonus spins</span></div>
-<div class="feature">⭐ <b>Bonus Pick</b><span>Interactive bonus reward screen</span></div>
-<div class="feature">⚡ <b>PixiJS</b><span>TypeScript-based 2D rendering architecture</span></div>
-</div>
-</section>
-<section class="card">
-<h2>Engineering Focus</h2>
-<p>PixiJS rendering • TypeScript architecture • reel state management • animation timing • responsive scaling • game UI • payline evaluation • bonus-state transitions.</p>
-</section>
-</main>
-<footer>Portfolio prototype — no real-money wagering, payments, or production gambling backend.</footer>
+  <header class="wrap nav">
+    <a class="logo" href="#top">GOPAL BHATNAGAR<span>.</span></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="#games">Games</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <div>
+        <div class="tag">PIXIJS • TYPESCRIPT • HTML5 GAME DEVELOPMENT</div>
+        <h1>Sample <em>Slot</em></h1>
+        <p>A commercial-style 5×3 slot game prototype built with PixiJS and TypeScript, demonstrating reel animation, paylines, Wild/Scatter mechanics, Free Spins, Bonus Pick gameplay and responsive presentation.</p>
+        <div class="buttons">
+          <a class="primary" href="./game/dist/">Launch Game Demo</a>
+          <a class="secondary" href="./game/">View Game Project</a>
+        </div>
+      </div>
+
+      <div class="slotbox" aria-label="Sample slot preview">
+        <div class="machine-top">
+          <span>Portfolio Reel</span>
+          <span class="jackpot">JACKPOT</span>
+        </div>
+        <div class="reels" id="reels">
+          <div class="reel"><small>7</small>🍒<small>BAR</small></div>
+          <div class="reel"><small>★</small>💎<small>7</small></div>
+          <div class="reel"><small>BAR</small>🍋<small>★</small></div>
+          <div class="reel"><small>7</small>🔔<small>💎</small></div>
+          <div class="reel"><small>🍒</small>7️⃣<small>BAR</small></div>
+        </div>
+        <div class="machine-bottom">
+          <span class="pill">PixiJS • TypeScript • HTML5</span>
+          <button class="spin" type="button" onclick="spin()">SPIN</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section-block">
+      <div class="section-head">
+        <h2>Game Features</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="icon">🎰</div>
+          <h3>5×3 Reels</h3>
+          <p>Distinct reel strips and sequential stopping for a polished slot experience.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🎯</div>
+          <h3>20 Paylines</h3>
+          <p>Visual paylines and win highlighting that keeps outcomes clear and readable.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🃏</div>
+          <h3>Wild</h3>
+          <p>Wild substitution logic that amplifies win potential and bonus interaction.</p>
+        </article>
+        <article class="card">
+          <div class="icon">💎</div>
+          <h3>Free Spins</h3>
+          <p>Scatter-triggered bonus spins that add layered game progression and reward loops.</p>
+        </article>
+        <article class="card">
+          <div class="icon">⭐</div>
+          <h3>Bonus Pick</h3>
+          <p>Interactive bonus selection screens designed for clear player decision-making.</p>
+        </article>
+        <article class="card">
+          <div class="icon">⚡</div>
+          <h3>PixiJS</h3>
+          <p>TypeScript-driven 2D rendering architecture built for animation-heavy gameplay.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section-block">
+      <div class="section-head">
+        <h2>Game-focused portfolio</h2>
+        <p>Use these as featured case-study slots. Replace the demo links with your real game builds when ready.</p>
+      </div>
+      <div class="games" id="games">
+        <article class="game">
+          <div class="game-symbols"><span class="symbol">💎</span><span class="symbol">7</span><span class="symbol">🍒</span></div>
+          <h3>Casino Slot Games</h3>
+          <p>HTML5 casino slot development, game logic, real-time communication and performance-focused frontend implementation.</p>
+          <a class="game-link" href="#contact">Add live demo →</a>
+        </article>
+        <article class="game">
+          <div class="game-symbols"><span class="symbol">♠</span><span class="symbol">A</span><span class="symbol">♣</span></div>
+          <h3>Real-Time Poker</h3>
+          <p>Real-time poker frontend architecture with WebSocket communication, responsive UI and desktop/web delivery.</p>
+          <a class="game-link" href="#experience">View experience →</a>
+        </article>
+        <article class="game">
+          <div class="game-symbols"><span class="symbol">🃏</span><span class="symbol">♥</span><span class="symbol">K</span></div>
+          <h3>Rummy &amp; Fantasy</h3>
+          <p>Hybrid Android/iOS gaming clients with dynamic UI, gameplay modules and server-side communication.</p>
+          <a class="game-link" href="#experience">View experience →</a>
+        </article>
+        <article class="game">
+          <div class="game-symbols"><span class="symbol">⚡</span><span class="symbol">🎰</span><span class="symbol">7</span></div>
+          <h3>Game Frameworks</h3>
+          <p>Experience with internal gaming frameworks and reusable frontend components for streamlined game development.</p>
+          <a class="game-link" href="#expertise">See expertise →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section-block" id="expertise">
+      <div class="section-head">
+        <h2>What I bring</h2>
+        <p>A senior engineering profile combining game development, frontend architecture, real-time systems and performance.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="icon">⚡</div>
+          <h3>Game Development</h3>
+          <p>Online casino slots, poker, rummy and fantasy products with real-time server communication and gameplay modules.</p>
+          <div class="tags"><span class="tag">HTML5</span><span class="tag">Canvas</span><span class="tag">JavaScript</span><span class="tag">Node.js</span></div>
+        </article>
+        <article class="card">
+          <div class="icon">◈</div>
+          <h3>Frontend Architecture</h3>
+          <p>Scalable, modular architectures for responsive web, desktop and hybrid mobile applications.</p>
+          <div class="tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Angular</span><span class="tag">Next.js</span></div>
+        </article>
+        <article class="card">
+          <div class="icon">◎</div>
+          <h3>Performance &amp; Quality</h3>
+          <p>Performance optimization, testing, quality checks and issue diagnostics across large gaming products.</p>
+          <div class="tags"><span class="tag">RTP</span><span class="tag">Optimization</span><span class="tag">QA</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap section-block" id="experience">
+      <div class="section-head">
+        <h2>Gaming experience</h2>
+        <p>Selected career history from the resume, with emphasis on gaming and game-development roles.</p>
+      </div>
+      <div class="timeline">
+        <div class="job">
+          <div class="date">DEC 2025 — PRESENT</div>
+          <h3>Senior Lead Developer</h3>
+          <div class="company">Raize Games</div>
+          <p>Leading frontend architecture for an iGaming product using React, Next.js, TypeScript, Node.js and WebSocket. Focus areas include responsive UI/UX, backend integrations, performance and scalability.</p>
+        </div>
+        <div class="job">
+          <div class="date">JUN 2023 — NOV 2025</div>
+          <h3>Front-End Architect</h3>
+          <div class="company">OneVerse Gaming Technology Pvt. Ltd.</div>
+          <p>Led frontend architecture for a poker product using Angular 14, TypeScript, Node.js, Electron, Kotlin, Swift, Svelte and WebSocket. Also delivered gaming websites and admin products.</p>
+        </div>
+        <div class="job">
+          <div class="date">JAN 2019 — MAY 2023</div>
+          <h3>Senior Software Engineer</h3>
+          <div class="company">Bioveda Action Research Pvt. Ltd. (Playone)</div>
+          <p>Developed hybrid mobile applications for fantasy and rummy products using Ionic, Angular, TypeScript and server-side communication, with AWS production deployment.</p>
+        </div>
+        <div class="job">
+          <div class="date">OCT 2016 — DEC 2018</div>
+          <h3>Senior Software Engineer</h3>
+          <div class="company">Junglee Games</div>
+          <p>Developed mobile and hybrid clients for rummy games and integrated game logic with server-side APIs for real-time multiplayer functionality.</p>
+        </div>
+        <div class="job">
+          <div class="date">JUL 2014 — OCT 2016</div>
+          <h3>Senior Game Developer</h3>
+          <div class="company">Gauss Networks</div>
+          <p>Developed desktop poker executables and online card games, and worked on online casino slot games using HTML5, CSS3, JavaScript, jQuery, XML and Node.js.</p>
+        </div>
+        <div class="job">
+          <div class="date">AUG 2012 — JUL 2014</div>
+          <h3>HTML Developer</h3>
+          <div class="company">Ingenuity Gaming</div>
+          <p>Developed front-end components for online casino slot games and contributed to Ingenuity Gaming Framework II, including real-time server communication and slot-game logic.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section-block">
+      <div class="section-head">
+        <h2>Technology</h2>
+        <p>Core technologies and tools reflected in the current resume.</p>
+      </div>
+      <div class="skills">
+        <span class="skill">HTML5</span>
+        <span class="skill">CSS3 / SCSS</span>
+        <span class="skill">JavaScript ES6+</span>
+        <span class="skill">TypeScript</span>
+        <span class="skill">React</span>
+        <span class="skill">Next.js</span>
+        <span class="skill">Angular</span>
+        <span class="skill">Svelte</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">Electron.js</span>
+        <span class="skill">Canvas</span>
+        <span class="skill">WebSocket</span>
+        <span class="skill">MongoDB</span>
+        <span class="skill">MySQL</span>
+        <span class="skill">AWS</span>
+        <span class="skill">Azure</span>
+        <span class="skill">Firebase</span>
+        <span class="skill">Python</span>
+        <span class="skill">ChatGPT</span>
+        <span class="skill">Gemini</span>
+        <span class="skill">Claude AI</span>
+        <span class="skill">Cursor</span>
+        <span class="skill">GitHub Copilot</span>
+        <span class="skill">Agentic AI</span>
+      </div>
+    </section>
+
+    <section class="wrap section-block" id="contact">
+      <div class="contact">
+        <div class="contactbox">
+          <div class="eyebrow">Available for opportunities</div>
+          <h3>Let's build the next game.</h3>
+          <p>Looking for Senior Slot Game Developer, Game Frontend Architect, HTML5 Game Developer or Technical Lead opportunities.</p>
+          <div class="buttons">
+            <a class="btn primary" href="mailto:er.gopalbhatnagar@gmail.com">Email me</a>
+            <a class="btn" href="tel:+918595635742">Call</a>
+          </div>
+        </div>
+        <div class="contactbox">
+          <div class="contactline"><span>Email</span>er.gopalbhatnagar@gmail.com</div>
+          <div class="contactline"><span>Phone</span>+91 8595635742 · +91 9560233141</div>
+          <div class="contactline"><span>Education</span>B.Tech in Computer Science — U.P. Technical University, Lucknow</div>
+          <div class="contactline"><span>Certification</span>Applied Agentic AI Certification</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Portfolio prototype — no real-money wagering, payments, or production gambling backend.</span>
+    <span>© <span id="year">2026</span> Gopal Bhatnagar</span>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function spin() {
+      const icons = ['🍒', '💎', '7️⃣', '🔔', '🍋', '⭐', 'BAR'];
+      document.querySelectorAll('.reel').forEach((r) => {
+        r.style.transform = 'translateY(4px)';
+        r.innerHTML = '<small>' + icons[Math.floor(Math.random() * icons.length)] + '</small>' + icons[Math.floor(Math.random() * icons.length)] + '<small>' + icons[Math.floor(Math.random() * icons.length)] + '</small>';
+        setTimeout(() => r.style.transform = '', 120);
+      });
+    }
+  </script>
 </body>
 </html>

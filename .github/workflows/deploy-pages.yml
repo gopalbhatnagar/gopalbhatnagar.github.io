@@ -43,10 +43,18 @@ jobs:
           rm -rf game/node_modules
           rm -rf game/.vite
 
+      - name: Prepare Pages deployment folder
+        run: |
+          mkdir -p .site/game
+          cp index.html .site/index.html
+          cp Gopal_Bhatnagar_Resume.pdf .site/Gopal_Bhatnagar_Resume.pdf
+          cp -R game/dist/. .site/game/dist/
+          cp .nojekyll .site/.nojekyll
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: .site
 
   deploy:
     needs: build

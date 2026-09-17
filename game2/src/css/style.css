@@ -1,0 +1,130 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  background-image: url("../assets/bg.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 1200px) {
+  body {
+    background-image: url("../assets/bg_small.jpg");
+  }
+}
+
+#reels {
+  display: flex;
+  width: 100vw;
+  height: calc((3 / 5) * 100vw);
+  max-height: calc(90vh - 50px - 40px);
+  max-width: calc((5 / 3) * (90vh - 50px - 40px));
+}
+
+.reel {
+  overflow: hidden;
+  width: 20%;
+  height: 100%;
+  position: relative;
+}
+
+.reel > .icons {
+  position: relative;
+}
+
+.reel > .icons > img {
+  width: calc(100% + 6px);
+  margin: -3px 0 0 -3px;
+  height: auto;
+
+  /* enable gpu accelaration, fixes iOS flicker */
+  transform: translate3d(0, 0, 0);
+}
+
+#controls {
+  position: relative;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 26px;
+  margin-top: 18px;
+  border: 1px solid rgba(214, 177, 93, 0.8);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(18, 24, 35, 0.96), rgba(31, 41, 55, 0.9));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+#controls::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+#controls label {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: #f4d27a;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+#controls label input {
+  margin-right: 10px;
+  accent-color: #d5ad6d;
+  width: 20px;
+  height: 20px;
+}
+
+#spin {
+  border: 1px solid rgba(255, 214, 123, 0.7);
+  background: linear-gradient(135deg, #f9d57f 0%, #d5ad6d 40%, #a96d2d 100%);
+  color: #1f1a12;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  border-radius: 12px;
+  padding: 10px 26px;
+  min-width: 150px;
+  box-shadow: 0 8px 18px rgba(214, 173, 93, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+#spin:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(214, 173, 93, 0.4);
+  filter: brightness(1.04);
+}
+
+#spin:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+input[type="checkbox"] {
+  width: 40px;
+  height: 40px;
+}
+
+#jackpot {
+  color: #d5ad6d;
+  font-size: 40px;
+  text-align: center;
+}
+
+#slot.inverted .reel {
+  transform: scaleY(-1);
+}
+
+#slot.inverted .reel > .icons > img {
+  transform: scaleY(-1);
+}

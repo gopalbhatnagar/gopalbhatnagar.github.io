@@ -38,17 +38,28 @@ jobs:
         working-directory: game
         run: npm run build
 
+      - name: Install game2 dependencies
+        working-directory: game2
+        run: npm ci
+
+      - name: Build game2 bundle
+        working-directory: game2
+        run: npm run build
+
       - name: Remove local install artifacts
         run: |
           rm -rf game/node_modules
           rm -rf game/.vite
+          rm -rf game2/node_modules
+          rm -rf game2/.vite
 
       - name: Prepare Pages deployment folder
         run: |
-          mkdir -p .site/game
+          mkdir -p .site/game .site/game2
           cp index.html .site/index.html
           cp Gopal_Bhatnagar_Resume.pdf .site/Gopal_Bhatnagar_Resume.pdf
           cp -R game/dist/. .site/game/dist/
+          cp -R game2/dist/. .site/game2/dist/
           cp .nojekyll .site/.nojekyll
 
       - name: Upload Pages artifact
